@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
-// import { Promo } from "@/components/promo";
-// import { Quests } from "@/components/quests";
+import { Promo } from "@/components/promo";
+import { Quests } from "@/components/quests";
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { UserProgress } from "@/components/user-progress";
 import { StickyWrapper } from "@/components/sticky-wrapper";
@@ -14,7 +14,7 @@ import {
 	getUserSubscription,
 } from "@/db/queries";
 
-// import { Unit } from "./unit";
+import { Unit } from "./unit";
 import { Header } from "./header";
 
 const LearnPage = async () => {
@@ -57,14 +57,14 @@ const LearnPage = async () => {
 					points={userProgress.points}
 					hasActiveSubscription={isPro}
 				/>
-				{/* {!isPro && <Promo />} */}
-				{/* <Quests points={userProgress.points} /> */}
+				{!isPro && <Promo />}
+				<Quests points={userProgress.points} />
 			</StickyWrapper>
 			<FeedWrapper>
 				<Header title={userProgress.activeCourse.title} />
 				{units.map((unit) => (
 					<div key={unit.id} className="mb-10">
-						{/* <Unit
+						<Unit
 							id={unit.id}
 							order={unit.order}
 							description={unit.description}
@@ -78,7 +78,7 @@ const LearnPage = async () => {
 									| undefined
 							}
 							activeLessonPercentage={lessonPercentage}
-						/> */}
+						/>
 					</div>
 				))}
 			</FeedWrapper>
